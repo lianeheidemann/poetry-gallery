@@ -1,5 +1,10 @@
 import { createSalt, hashPassword } from "../core/crypto.js";
-import { ROUTES, STORAGE_KEYS, VALIDATION } from "../core/constants.js";
+import {
+  DEMO_CREDENTIALS,
+  ROUTES,
+  STORAGE_KEYS,
+  VALIDATION
+} from "../core/constants.js";
 import { localStore, sessionStore } from "../core/storage.js";
 
 function normalizeUsername(username) {
@@ -27,6 +32,15 @@ export async function register(usernameInput, password) {
 
 export async function login(usernameInput, password) {
   const username = normalizeUsername(usernameInput);
+
+  if (
+    username === DEMO_CREDENTIALS.username &&
+    password === DEMO_CREDENTIALS.password
+  ) {
+    sessionStore.set(STORAGE_KEYS.session, { username });
+    return true;
+  }
+
   const user = localStore.get(STORAGE_KEYS.user);
 
   if (!user || user.username !== username) {

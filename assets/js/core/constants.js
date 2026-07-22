@@ -14,3 +14,8 @@ export const VALIDATION = Object.freeze({
   usernameMinLength: 3,
   passwordMinLength: 6
 });
+
+export const DEMO_CREDENTIALS = Object.freeze({
+  username: "teste",
+  password: "teste123"
+});

@@ -6,6 +6,13 @@ Aplicação web responsiva para cadastrar, pesquisar e organizar poemas. Desenvo
 
 https://github.com/lianeheidemann/minhaGaleria/assets/54177181/8df0d37a-eb89-4f11-bdf1-1e1b7750e620
 
+## Acesso para teste
+
+- **Usuário:** `teste`
+- **Senha:** `teste123`
+
+Essas credenciais são públicas e devem ser usadas somente para testar o projeto.
+
 ## Funcionalidades
 
 - cadastro e autenticação local;
