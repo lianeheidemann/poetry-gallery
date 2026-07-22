@@ -1,9 +1,31 @@
 # Minha Galeria
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+Aplicação web em HTML, CSS e JavaScript puro para cadastrar, pesquisar e excluir poemas.
 
-Uma galeria de imagens responsiva e intuitiva, desenvolvida com HTML e CSS puro. O projeto oferece uma experiência visual agradável para exibição de fotografias e imagens com um design moderno.
+## Estrutura
 
-https://github.com/lianeheidemann/minhaGaleria/assets/54177181/8df0d37a-eb89-4f11-bdf1-1e1b7750e620
+```text
+web_minha_galeria/
+├── assets/
+│   ├── css/
+│   │   ├── auth.css
+│   │   ├── base.css
+│   │   └── gallery.css
+│   └── js/
+│       ├── gallery.js
+│       ├── login.js
+│       ├── register.js
+│       └── storage.js
+├── Imagens/
+├── cadastrar.html
+├── galeria.html
+└── login.html
+```
+
+Os arquivos HTML cuidam da estrutura, os arquivos CSS da apresentação e os arquivos JavaScript do comportamento e da persistência no `localStorage`.
+
+## Executar localmente
+
+Abra `cadastrar.html` no navegador para criar um usuário. Em seguida, faça login e use a galeria.
+
+> Este é um projeto educacional. As credenciais ficam no `localStorage` do navegador e esse método não deve ser usado em produção.
