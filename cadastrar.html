@@ -1,40 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Crie uma conta para organizar seus poemas.">
-  <title>Criar conta | Minha Galeria</title>
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/auth.css">
-  <script type="module" src="assets/js/pages/register.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar usuário</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/cadastrar.js" defer></script>
 </head>
-<body class="auth-page">
-  <main class="auth-card" aria-labelledby="page-title">
-    <header class="auth-card__header">
-      <img class="auth-card__avatar" src="Imagens/avatarNovoUser.png" alt="" width="112" height="112">
-      <h1 id="page-title">Criar conta</h1>
-      <p>Cadastre seus dados para começar.</p>
-    </header>
+<body>
+  <section class="auth-section">
+    <h2 class="auth-title">Cadastrar novo usuário</h2>
 
-    <form id="register-form" class="form">
-      <div class="form__field">
-        <label for="username">Usuário</label>
-        <input id="username" name="username" type="text" autocomplete="username" minlength="3" required>
-        <small>Use pelo menos 3 caracteres.</small>
+    <form id="formCadastro" class="auth-container">
+      <div class="imgcontainer">
+        <img src="img/avatarNovoUser.png" alt="Avatar de novo usuário" class="avatar">
       </div>
 
-      <div class="form__field">
-        <label for="password">Senha</label>
-        <input id="password" name="password" type="password" autocomplete="new-password" minlength="6" required>
-        <small>Use pelo menos 6 caracteres.</small>
-      </div>
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" required>
 
-      <p id="form-feedback" class="form__feedback" role="alert" aria-live="polite"></p>
-      <button class="button" type="submit">Criar conta</button>
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Cadastrar">
+
+      <p class="auth-footer">
+        <a href="login.html">Voltar para a tela de login</a>
+      </p>
     </form>
-
-    <p class="auth-card__footer"><a href="login.html">Voltar para o login</a></p>
-  </main>
+  </section>
 </body>
 </html>

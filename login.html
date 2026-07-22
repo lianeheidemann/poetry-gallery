@@ -1,38 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Acesse sua galeria pessoal de poemas.">
-  <title>Entrar | Minha Galeria</title>
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/auth.css">
-  <script type="module" src="assets/js/pages/login.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fazer login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/login.js" defer></script>
 </head>
-<body class="auth-page">
-  <main class="auth-card" aria-labelledby="page-title">
-    <header class="auth-card__header">
-      <img class="auth-card__avatar" src="Imagens/avatar.png" alt="" width="112" height="112">
-      <h1 id="page-title">Boas-vindas</h1>
-      <p>Entre para acessar sua galeria de poemas.</p>
-    </header>
+<body>
+  <section class="auth-section">
+    <h2 class="auth-title">Fazer login</h2>
 
-    <form id="login-form" class="form">
-      <div class="form__field">
-        <label for="username">Usuário</label>
-        <input id="username" name="username" type="text" autocomplete="username" minlength="3" required>
+    <form id="formLogin" class="auth-container">
+      <div class="imgcontainer">
+        <img src="img/avatar.png" alt="Avatar" class="avatar">
       </div>
 
-      <div class="form__field">
-        <label for="password">Senha</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" minlength="6" required>
-      </div>
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" required>
 
-      <p id="form-feedback" class="form__feedback" role="alert" aria-live="polite"></p>
-      <button class="button" type="submit">Entrar</button>
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Entrar">
+
+      <p class="auth-footer">
+        Ainda não tem <a href="cadastrar.html">cadastro</a>?
+      </p>
     </form>
-
-    <p class="auth-card__footer">Ainda não tem conta? <a href="cadastrar.html">Cadastre-se</a></p>
-  </main>
+  </section>
 </body>
 </html>

@@ -1,56 +1,26 @@
 # Minha Galeria
 
-Galeria de poemas desenvolvida com HTML, CSS, JavaScript, Flask e SQLite. Permite criar uma conta, fazer login, pesquisar, cadastrar e excluir poemas.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+Aplicação web para gerenciamento de uma galeria de poemas, desenvolvida com HTML, CSS e JavaScript. O projeto permite cadastrar usuários, autenticar o acesso e organizar poemas, utilizando o `localStorage` para persistência local dos dados.
 
 ## Demonstração
 
 https://github.com/lianeheidemann/minhaGaleria/assets/54177181/8df0d37a-eb89-4f11-bdf1-1e1b7750e620
 
-## Funcionalidades
-
-- cadastro e autenticação com sessão;
-- senhas protegidas com hash no servidor;
-- armazenamento de usuários e poemas em SQLite;
-- busca, inclusão e exclusão de poemas;
-- interface responsiva.
-
-## Banco de dados
-
-O SQLite armazena os usuários e poemas no arquivo local `instance/gallery.sqlite3`, criado automaticamente na primeira execução. O Flask disponibiliza uma API para o navegador acessar o banco com segurança. A pasta `instance` não é enviada ao GitHub.
-
-## Usuário de teste
-
-- **Usuário:** `teste`
-- **Senha:** `teste123`
-
-A conta é criada automaticamente com cinco poemas clássicos: Canção do Exílio, Via Láctea — XIII, As Pombas, Círculo Vicioso e Mal Secreto. As fontes estão registradas em cada poema.
+O vídeo também está disponível em [`assets/interface_v1.mp4`](assets/interface_v1.mp4).
 
 ## Como executar
 
-No terminal, dentro da pasta do projeto:
+1. Abra o projeto no **Visual Studio Code**.
+2. Instale a extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+3. Clique com o botão direito no arquivo `cadastrar.html`.
+4. Selecione **Open with Live Server**.
+5. Cadastre um usuário e uma senha.
+6. Acesse a página `login.html` e entre com os dados cadastrados.
 
-```bash
-python -m venv .venv
-```
+<br>
 
-Ative o ambiente virtual:
-
-- Windows: `.venv\Scripts\activate`
-- Linux/macOS: `source .venv/bin/activate`
-
-Depois execute:
-
-```bash
-python -m pip install -r requirements.txt
-python app.py
-```
-
-Acesse [http://127.0.0.1:5000](http://127.0.0.1:5000).
-
-## Testes
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-> O GitHub Pages não executa Flask ou SQLite. A aplicação completa precisa de uma hospedagem compatível com Python.
+> Os dados são armazenados somente no `localStorage` do navegador. Portanto, este projeto é adequado apenas para estudos e demonstrações locais.

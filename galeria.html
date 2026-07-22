@@ -1,79 +1,116 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cadastre, encontre e organize seus poemas.">
-  <title>Poemas | Minha Galeria</title>
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/gallery.css">
-  <script type="module" src="assets/js/pages/gallery.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de poemas</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/galeria.css">
+  <script src="js/galeria.js" defer></script>
 </head>
 <body>
-  <header class="app-header">
-    <div>
-      <p class="app-header__eyebrow">Minha Galeria</p>
-      <h1>Galeria de poemas</h1>
-    </div>
-    <div class="app-header__actions">
-      <span>Olá, <strong id="current-username"></strong></span>
-      <button id="logout-button" class="button button--secondary" type="button">Sair</button>
-    </div>
+  <header class="containerTitulo">
+    <span id="logout">Logout</span>
+    <h1>Galeria de Poemas</h1>
   </header>
 
-  <main class="app-layout">
-    <section class="panel editor" aria-labelledby="editor-title">
-      <h2 id="editor-title">Novo poema</h2>
-      <p class="section-description">Preencha os campos para adicionar um texto à sua coleção.</p>
+  <br>
 
-      <form id="poem-form" class="form">
-        <div class="form__field">
-          <label for="title">Título</label>
-          <input id="title" name="title" type="text" maxlength="100" required>
-        </div>
+  <section class="containerCadastro" id="meuContainer">
+    <div class="div-1">
+      <p>Usuário: <strong id="myUsername"></strong></p>
+    </div>
 
-        <div class="form__field">
-          <label for="author">Autor</label>
-          <input id="author" name="author" type="text" maxlength="80" required>
-        </div>
+    <p>Adicionar poema</p>
+    <input type="text" id="titulo" name="titulo" placeholder="Título">
+    <input type="text" id="autor" name="autor" placeholder="Autor">
+    <input type="text" id="poema" name="poema" style="height: 100px" placeholder="Poema">
 
-        <div class="form__field">
-          <label for="poem">Poema</label>
-          <textarea id="poem" name="poem" rows="7" maxlength="3000" required></textarea>
-        </div>
+    <div class="containerSelection">
+      <label for="select">Categoria:&nbsp;&nbsp;</label>
+      <select id="select" name="select">
+        <option value="Sem Categoria">Sem Categoria</option>
+        <option value="Amor">Amor</option>
+        <option value="Tristeza">Tristeza</option>
+        <option value="Felicidade">Felicidade</option>
+        <option value="Medo">Medo</option>
+        <option value="Etc">Etc</option>
+      </select>
+    </div>
 
-        <div class="form__field">
-          <label for="category">Categoria</label>
-          <select id="category" name="category">
-            <option value="Sem categoria">Sem categoria</option>
-            <option value="Amor">Amor</option>
-            <option value="Tristeza">Tristeza</option>
-            <option value="Felicidade">Felicidade</option>
-            <option value="Medo">Medo</option>
-            <option value="Outros">Outros</option>
-          </select>
-        </div>
+    <button type="button" id="adicionarPoema">Adicionar poema</button>
+  </section>
 
-        <button class="button" type="submit">Adicionar à galeria</button>
-      </form>
-    </section>
+  <br>
 
-    <section class="collection" aria-labelledby="collection-title">
-      <div class="collection__header">
-        <div>
-          <h2 id="collection-title">Seus poemas</h2>
-          <p class="section-description">Pesquise por título, autor, categoria ou conteúdo.</p>
-        </div>
-        <div class="form__field collection__search">
-          <label class="sr-only" for="search-input">Pesquisar poemas</label>
-          <input id="search-input" type="search" placeholder="Pesquisar poemas…">
-        </div>
-      </div>
+  <section class="containerBusca">
+    <label for="inputPesquisa">Buscar por título, categoria ou palavra-chave:</label>
+    <input type="text" id="inputPesquisa" placeholder="Digite para pesquisar">
+  </section>
 
-      <p id="empty-message" class="empty-state" hidden>Nenhum poema encontrado.</p>
-      <p id="gallery-feedback" class="form__feedback" role="alert" aria-live="polite"></p>
-      <div id="poem-list" class="poem-list" aria-live="polite"></div>
-    </section>
-  </main>
+  <div class="containerGaleria">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th><h2>Poemas</h2></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Poeminho do Contra</strong>
+            (Autor: Mario Quintana)<br><br>
+            Todos esses que aí estão<br>
+            Atravancando meu caminho,<br>
+            Eles passarão...<br>
+            Eu passarinho!<br><br>
+            [Categoria: Felicidade]
+          </td>
+          <td>
+            <button type="button" class="delete-button">
+              <img src="img/deleteIcon.png" alt="Excluir poema">
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Ouvir Estrelas</strong>
+            (Autor: Olavo Bilac)<br><br>
+            Ora, direis, ouvir estrelas! Certo<br>
+            Perdeste o senso! E eu vos direi, no entanto,<br>
+            Que, para ouvi-las, muita vez desperto<br>
+            E abro as janelas, pálido de espanto.`<br><br>
+            [Categoria: Etc]
+          </td>
+          <td>
+            <button type="button" class="delete-button">
+              <img src="img/deleteIcon.png" alt="Excluir poema">
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Autopsicografia</strong>
+            (Autor: Fernando Pessoa)<br><br>
+            O poeta é um fingidor.<br>
+            Finge tão completamente<br>
+            Que chega a fingir que é dor<br>
+            A dor que deveras sente.<br><br>
+            [Categoria: Tristeza]
+          </td>
+          <td>
+            <button type="button" class="delete-button">
+              <img src="img/deleteIcon.png" alt="Excluir poema">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="gallery-footer">
+      <a href="login.html">Voltar à tela de login</a>
+    </p>
+  </div>
 </body>
 </html>

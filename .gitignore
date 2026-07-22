@@ -1,8 +1,0 @@
-__pycache__/
-*.py[cod]
-.venv/
-instance/
-.env
-pip-metadata-*/
-pip-unpack-*/
-tmp*

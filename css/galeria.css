@@ -1,0 +1,102 @@
+button,
+input,
+select {
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  color: #55608f;
+}
+
+table {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+tr,
+td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+th {
+  background-color: #55608f;
+}
+
+.containerTitulo {
+  padding: 2px 7px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#logout {
+  display: block;
+  text-align: left;
+  cursor: pointer;
+}
+
+.containerCadastro,
+.containerBusca,
+.containerGaleria {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.containerCadastro {
+  max-width: 300px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.containerBusca {
+  max-width: 400px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.containerGaleria {
+  max-width: 800px;
+}
+
+.containerSelection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-1 {
+  display: flex;
+  justify-content: center;
+  background-color: #7c6094;
+}
+
+.delete-button {
+  display: block;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.delete-button img {
+  display: block;
+  margin: 0 auto;
+}
+
+.gallery-footer {
+  margin: 16px 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .containerCadastro,
+  .containerBusca,
+  .containerGaleria,
+  table {
+    width: 90%;
+  }
+}
