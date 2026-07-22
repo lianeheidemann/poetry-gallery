@@ -1,0 +1,102 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 5vw, 3rem);
+  background: var(--panel);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+  margin: 0;
+}
+
+.secondary-button {
+  width: auto;
+  background: transparent;
+  border: 1px solid #ffffff;
+}
+
+.page-content {
+  display: grid;
+  gap: 1.25rem;
+  width: min(90%, 800px);
+  margin: 1.25rem auto 2rem;
+}
+
+.form-panel {
+  width: min(100%, 360px);
+  margin-inline: auto;
+}
+
+.form-panel input,
+.form-panel select,
+.form-panel textarea,
+.form-panel button,
+.search-panel input {
+  margin: 0.4rem 0 0.9rem;
+}
+
+.form-panel textarea {
+  resize: vertical;
+}
+
+.user-label {
+  margin-top: 0;
+  padding: 0.75rem;
+  background: #7c6094;
+  text-align: center;
+}
+
+.search-panel {
+  width: min(100%, 480px);
+  margin-inline: auto;
+}
+
+.poem-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.poem-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--panel);
+}
+
+.poem-card h3,
+.poem-card p {
+  margin-top: 0;
+}
+
+.poem-text {
+  white-space: pre-wrap;
+}
+
+.delete-button {
+  width: 44px;
+  height: 44px;
+  padding: 0.6rem;
+  background: var(--danger);
+}
+
+.delete-button img {
+  width: 100%;
+}
+
+.empty-message {
+  text-align: center;
+}
+
+@media (max-width: 540px) {
+  .page-header {
+    align-items: flex-start;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+}

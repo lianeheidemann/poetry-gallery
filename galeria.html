@@ -1,309 +1,60 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Galeria</title>
-    <style>
-        body {
-            background: linear-gradient(45deg, #49a09d, #5f2c82);
-            color: #fff;
-        }
-        button,input,select {
-            width: 100%;
-            padding: 10px 20px;
-            margin: 6px 0;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            color: #55608f;
-        }
-        table {
-            width: 80%;
-            max-width: 800px;
-            margin: 0 auto;
-            
-        }
-        tr, td {
-            padding: 15px;
-            background-color: rgba(255,255,255,0.2);    
-        }
-        th {
-            background-color: #55608f;
-        }
-        .containerTitulo {
-        	padding: 2px 7px;
-            background-color: rgba(255,255,255,0.2);
-            box-shadow: 0 0 20px  rgba(0,0,0,0.1);
-        }
-        .containerCadastro {
-            width: 80%;
-            max-width: 300px;
-            margin: 0 auto;
-            background-color: rgba(255,255,255,0.2);
-            box-shadow: 0 0 20px  rgba(0,0,0,0.1);
-            padding: 20px;
-        }
-        .containerBusca {
-            width: 80%;
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: rgba(255,255,255,0.2);
-            box-shadow: 0 0 20px  rgba(0,0,0,0.1);
-            padding: 20px;
-        }
-        .containerSelection {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .containerGaleria {
-            width: 80%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .div-1 {
-            background-color: #7c6094;
-            display: flex;
-            justify-content: center;
-        }
-        @media (max-width: 768px) {
-            .container {
-            width: 90%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Poemas</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/gallery.css">
+  <script src="assets/js/storage.js" defer></script>
+  <script src="assets/js/gallery.js" defer></script>
 </head>
-
 <body>
-<div class="containerTitulo">
-	 <text id="logout" onclick="logout()">Logout</text>
-    <center><h1>Galeria de Poemas</h1></center><br>
+  <header class="page-header">
+    <h1>Galeria de Poemas</h1>
+    <button id="logoutButton" class="secondary-button" type="button">Sair</button>
+  </header>
 
-    </div>&nbsp;
-    
-    <!–  Cadastro de Poesias  –>
-    <div class="containerCadastro" id="meuContainer">
-        <div class="div-1">
-            <center><text style="font-size:19px">Usuario: <b id="myUsername"></b></text></center><br>
-    	</div><br>
-       
-        <left><text>Adicionar Poema</text></left>
-        <input type="text" id="titulo" name="titulo" placeholder="Titulo">
-        <input type="text" id="autor" name="autor" placeholder="Altor">
-        <input type="text" id="poema" name="poema" style="height: 100px" placeholder="Poema">           
-        
-        <div class="containerSelection">
-            <text>Categoria:&nbsp;&nbsp;</text>
-            <select id="select" name="select">
-                <option value="Sem Categoria">Sem Categoria</option>
-                <option value="Amor">Amor</option>
-                <option value="Tristeza">Tristeza</option>
-                <option value="Felicidade">Felicidade</option>
-                <option value="Medo">Medo</option>
-                <option value="Etc">Etc</option>
-            </select>
-        </div>
-        <button onclick="adicionaLinha('tbl')">Adicionar Poema</button>
-    </div>&nbsp;
-        
-    <!– Busca –>
-    <div class="containerBusca">
-        <left><text>Buscar por título, categoria ou palavra-chave: </text></left>
-        <input type="text" id="inputPesquisa" placeholder="Digite para pesquisar">
-    </div>
+  <main class="page-content">
+    <section id="poemFormSection" class="panel form-panel" aria-labelledby="formTitle">
+      <p class="user-label">Usuário: <strong id="currentUsername"></strong></p>
+      <h2 id="formTitle">Adicionar poema</h2>
 
-    <!– Galeria –>
-    <h1 id="myUsername"></h1>
-    <div class="containerGaleria">
-         <table id="tbl">
-            <tbody>
-                <thead>
-                      <tr>
-                          <th><h2>Poemas</h2></th>
-                          <th></th>
-                      </tr>
-                <thead>
-                <tr>
-                    <td>
-                        <b>Poeminho do Contra</b>
-                        (Autor: Mario Quintana)<br><br>
-                        Todos esses que aí estão<br>
-                        Atravancando meu caminho,<br>
-                        Eles passarão...<br>
-                        Eu passarinho!<br>
-                        <br>
-                        [Categoria: Felicidade]</td>
-                    </td>
-                     <td>
-                        <buttonX onclick='removeLinha(this)'>
-                                <center><img id="deletar" src="Imagens/deleteIcon.png"></center>
-                        </buttonX>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Da amizade entre mulheres</b>
-                        (Autor: Mario Quintana)<br><br>
-                        Dizem-se amigas... Beijam-se... Mas qual!<br>
-                        Haverá quem nisso creia?<br>
-                        Salvo se uma das duas, por sinal,<br>
-                        For muito velha, ou muito feia...<br>
-                        <br>
-                        [Categoria: Etc]
-                    </td>
-                    <td>
-                        <buttonX onclick='removeLinha(this)'>
-                                <center><img id="deletar" src="Imagens/deleteIcon.png"></center>
-                        </buttonX>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Sem Titulo</b>
-                        (Autor: Fernando Pessoa)
-                        <br><br>
-                        O poeta é um fingidor.<br>
-                        Finge tão completamente<br>
-                        Que chega a fingir que é dor<br>
-                        A dor que deveras sente.<br>
-                        <br>
-                        [Categoria: Tristeza]
-                     </td>
-                     <td>
-                        <buttonX onclick='removeLinha(this)'>
-                                <center><img id="deletar" src="Imagens/deleteIcon.png"></center>
-                        </buttonX>
-                    </td>
-                </tr>
-            </tbody>
-          </table>
+      <form id="poemForm">
+        <label for="title">Título</label>
+        <input type="text" id="title" name="title" required>
 
-        <center><text style="font-size:13px"><a href="login.html">Voltar a Tela de Login</a></text></center>
-    </div>      
-</body>   
+        <label for="author">Autor</label>
+        <input type="text" id="author" name="author" required>
 
-<script>
-    let listaDePoemas = [{titulo:"Flores do Jardim",poema:"Xxxxxxxxxxxxxxxxx\nXxxxxxxxxxxxx",autor:"Marina Severo",categoria:"Etc"}]
+        <label for="poem">Poema</label>
+        <textarea id="poem" name="poem" rows="5" required></textarea>
 
+        <label for="category">Categoria</label>
+        <select id="category" name="category">
+          <option value="Sem categoria">Sem categoria</option>
+          <option value="Amor">Amor</option>
+          <option value="Tristeza">Tristeza</option>
+          <option value="Felicidade">Felicidade</option>
+          <option value="Medo">Medo</option>
+          <option value="Outros">Outros</option>
+        </select>
 
-    let tituloX = document.getElementById("titulo")
-    let poemaX = document.getElementById("poema") 
-    let autorX = document.getElementById("autor") 
-    let categoriaX = document.getElementById("select") 
-    let buscaX = document.getElementById("busca") 
-    var username = localStorage.getItem("username");
+        <button type="submit">Adicionar poema</button>
+      </form>
+    </section>
 
-    var elemento = document.getElementById("myUsername");
-    elemento.innerHTML = username
+    <section class="panel search-panel" aria-labelledby="searchTitle">
+      <h2 id="searchTitle">Buscar poemas</h2>
+      <label for="searchInput">Título, autor, categoria ou palavra-chave</label>
+      <input type="search" id="searchInput" placeholder="Digite para pesquisar">
+    </section>
 
-    function elementosEntrada() {
-        return {titulo: tituloX.value,
-            poema: poemaX.value,
-            autor: autorX.value,
-            categoria: categoriaX.value
-        }
-    }
-    // Adiciona nova linha na tabela
-    function adicionaLinha(idTabela) {
-        var tabela = document.getElementById(idTabela);
-        var numeroLinhas = tabela.rows.length;
-        var linha = tabela.insertRow(numeroLinhas);
-        var celula1 = linha.insertCell(0);
-        var celula2 = linha.insertCell(1);
-
-        // Criar elementos HTML dinamicamente
-        var titulo = document.createElement("p");
-        var autor = document.createElement("p");
-        titulo.textContent = tituloX.value + " (Autor: " + autorX.value+")";
-
-        
-      
-
-        var poema = document.createElement("p");
-        poema.textContent = poemaX.value;
-
-        var categoria = document.createElement("p");
-        categoria.textContent = "[Categoria: " + categoriaX.value + "]";
-
-        // Adicionar elementos à celula1
-        celula1.appendChild(titulo);
-        celula1.appendChild(autor);
-        celula1.appendChild(poema);
-        //celula1.appendChild(document.createElement("br"));
-        celula1.appendChild(categoria);
-
-        celula2.innerHTML = "<buttonX onclick='removeLinha(this)'><center><img  src='Imagens/deleteIcon.png'></center></button>";
-    }
-
-    // Remove linha da tabela
-    function removeLinha(linha) {
-        var i=linha.parentNode.parentNode.rowIndex
-        document.getElementById('tbl').deleteRow(i)
-    }     
-    
-    function logout() {
-        deletarColuna();
-        // Selecionar o container pelo id
-        var container = document.getElementById("meuContainer");
-        var logout = document.getElementById("logout");
-        var deletar = document.getElementById("deletar");
-    
-        // Ocultar o container
-        container.style.display = "none";
-        logout.style.display = "none";
-        deletar.style.display = "none";
-    }
-    
-    function deletarColuna() {
-        var tabela = document.getElementById("tbl");
-
-        // Selecionar a coluna desejada pelo índice
-        var indiceColuna = 1; // Altere para o índice da coluna que você deseja deletar
-
-        // Percorrer cada linha da tabela
-        for (var i = 0; i < tabela.rows.length; i++) {
-            var row = tabela.rows[i];
-
-            // Remover a célula na coluna desejada pelo índice
-            row.deleteCell(indiceColuna);
-        }
-    }
-
-     var inputPesquisa = document.getElementById("inputPesquisa");
-    var tabela = document.getElementById("tbl");
-    var linhas = tabela.getElementsByTagName("tr");
-
-    inputPesquisa.addEventListener("keyup", function() {
-      var filtro = inputPesquisa.value.toLowerCase();
-
-      for (var i = 1; i < linhas.length; i++) {
-        var linha = linhas[i];
-        var colunas = linha.getElementsByTagName("td");
-        var encontrou = false;
-
-        for (var j = 0; j < colunas.length; j++) {
-          var coluna = colunas[j];
-          if (coluna.innerHTML.toLowerCase().indexOf(filtro) > -1) {
-            encontrou = true;
-            break;
-          }
-        }
-
-        if (encontrou) {
-          linha.style.display = "";
-        } else {
-          linha.style.display = "none";
-        }
-      }
-    });
-	var tabela = document.getElementById("tbl");
-    var celulas = tabela.getElementsByTagName("td");
-
-    for (var i = 0; i < celulas.length; i++) {
-      celulas[i].addEventListener("click", function() {
-        alert("Clicou na célula: " + this.textContent);
-      });
-    }
-
-</script>
-
+    <section class="gallery-panel" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle">Poemas</h2>
+      <p id="emptyMessage" class="empty-message" hidden>Nenhum poema encontrado.</p>
+      <div id="poemList" class="poem-list"></div>
+    </section>
+  </main>
+</body>
 </html>
