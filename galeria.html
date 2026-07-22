@@ -1,59 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria de Poemas</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cadastre, encontre e organize seus poemas.">
+  <title>Poemas | Minha Galeria</title>
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/gallery.css">
-  <script src="assets/js/storage.js" defer></script>
-  <script src="assets/js/gallery.js" defer></script>
+  <script type="module" src="assets/js/pages/gallery.js"></script>
 </head>
 <body>
-  <header class="page-header">
-    <h1>Galeria de Poemas</h1>
-    <button id="logoutButton" class="secondary-button" type="button">Sair</button>
+  <header class="app-header">
+    <div>
+      <p class="app-header__eyebrow">Minha Galeria</p>
+      <h1>Galeria de poemas</h1>
+    </div>
+    <div class="app-header__actions">
+      <span>Olá, <strong id="current-username"></strong></span>
+      <button id="logout-button" class="button button--secondary" type="button">Sair</button>
+    </div>
   </header>
 
-  <main class="page-content">
-    <section id="poemFormSection" class="panel form-panel" aria-labelledby="formTitle">
-      <p class="user-label">Usuário: <strong id="currentUsername"></strong></p>
-      <h2 id="formTitle">Adicionar poema</h2>
+  <main class="app-layout">
+    <section class="panel editor" aria-labelledby="editor-title">
+      <h2 id="editor-title">Novo poema</h2>
+      <p class="section-description">Preencha os campos para adicionar um texto à sua coleção.</p>
 
-      <form id="poemForm">
-        <label for="title">Título</label>
-        <input type="text" id="title" name="title" required>
+      <form id="poem-form" class="form">
+        <div class="form__field">
+          <label for="title">Título</label>
+          <input id="title" name="title" type="text" maxlength="100" required>
+        </div>
 
-        <label for="author">Autor</label>
-        <input type="text" id="author" name="author" required>
+        <div class="form__field">
+          <label for="author">Autor</label>
+          <input id="author" name="author" type="text" maxlength="80" required>
+        </div>
 
-        <label for="poem">Poema</label>
-        <textarea id="poem" name="poem" rows="5" required></textarea>
+        <div class="form__field">
+          <label for="poem">Poema</label>
+          <textarea id="poem" name="poem" rows="7" maxlength="3000" required></textarea>
+        </div>
 
-        <label for="category">Categoria</label>
-        <select id="category" name="category">
-          <option value="Sem categoria">Sem categoria</option>
-          <option value="Amor">Amor</option>
-          <option value="Tristeza">Tristeza</option>
-          <option value="Felicidade">Felicidade</option>
-          <option value="Medo">Medo</option>
-          <option value="Outros">Outros</option>
-        </select>
+        <div class="form__field">
+          <label for="category">Categoria</label>
+          <select id="category" name="category">
+            <option value="Sem categoria">Sem categoria</option>
+            <option value="Amor">Amor</option>
+            <option value="Tristeza">Tristeza</option>
+            <option value="Felicidade">Felicidade</option>
+            <option value="Medo">Medo</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
 
-        <button type="submit">Adicionar poema</button>
+        <button class="button" type="submit">Adicionar à galeria</button>
       </form>
     </section>
 
-    <section class="panel search-panel" aria-labelledby="searchTitle">
-      <h2 id="searchTitle">Buscar poemas</h2>
-      <label for="searchInput">Título, autor, categoria ou palavra-chave</label>
-      <input type="search" id="searchInput" placeholder="Digite para pesquisar">
-    </section>
+    <section class="collection" aria-labelledby="collection-title">
+      <div class="collection__header">
+        <div>
+          <h2 id="collection-title">Seus poemas</h2>
+          <p class="section-description">Pesquise por título, autor, categoria ou conteúdo.</p>
+        </div>
+        <div class="form__field collection__search">
+          <label class="sr-only" for="search-input">Pesquisar poemas</label>
+          <input id="search-input" type="search" placeholder="Pesquisar poemas…">
+        </div>
+      </div>
 
-    <section class="gallery-panel" aria-labelledby="galleryTitle">
-      <h2 id="galleryTitle">Poemas</h2>
-      <p id="emptyMessage" class="empty-message" hidden>Nenhum poema encontrado.</p>
-      <div id="poemList" class="poem-list"></div>
+      <p id="empty-message" class="empty-state" hidden>Nenhum poema encontrado.</p>
+      <div id="poem-list" class="poem-list" aria-live="polite"></div>
     </section>
   </main>
 </body>

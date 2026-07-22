@@ -1,32 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro | Minha Galeria</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crie uma conta para organizar seus poemas.">
+  <title>Criar conta | Minha Galeria</title>
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/auth.css">
-  <script src="assets/js/storage.js" defer></script>
-  <script src="assets/js/register.js" defer></script>
+  <script type="module" src="assets/js/pages/register.js"></script>
 </head>
 <body class="auth-page">
-  <main class="auth-card">
-    <h1>Cadastrar novo usuário</h1>
-    <form id="registerForm" class="auth-form">
-      <div class="avatar-container">
-        <img src="Imagens/avatarNovoUser.png" alt="Avatar de novo usuário" class="avatar">
+  <main class="auth-card" aria-labelledby="page-title">
+    <header class="auth-card__header">
+      <img class="auth-card__avatar" src="Imagens/avatarNovoUser.png" alt="" width="112" height="112">
+      <h1 id="page-title">Criar conta</h1>
+      <p>Cadastre seus dados para começar.</p>
+    </header>
+
+    <form id="register-form" class="form">
+      <div class="form__field">
+        <label for="username">Usuário</label>
+        <input id="username" name="username" type="text" autocomplete="username" minlength="3" required>
+        <small>Use pelo menos 3 caracteres.</small>
       </div>
 
-      <label for="username">Usuário</label>
-      <input type="text" id="username" name="username" autocomplete="username" required>
+      <div class="form__field">
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" minlength="6" required>
+        <small>Use pelo menos 6 caracteres.</small>
+      </div>
 
-      <label for="password">Senha</label>
-      <input type="password" id="password" name="password" autocomplete="new-password" required>
-
-      <button type="submit">Cadastrar</button>
-      <p id="formMessage" class="form-message" role="alert" aria-live="polite"></p>
-      <p class="auth-link"><a href="login.html">Voltar para a tela de login</a></p>
+      <p id="form-feedback" class="form__feedback" role="alert" aria-live="polite"></p>
+      <button class="button" type="submit">Criar conta</button>
     </form>
+
+    <p class="auth-card__footer"><a href="login.html">Voltar para o login</a></p>
   </main>
 </body>
 </html>

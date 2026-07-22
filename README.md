@@ -1,31 +1,54 @@
 # Minha Galeria
 
-Aplicação web em HTML, CSS e JavaScript puro para cadastrar, pesquisar e excluir poemas.
+Aplicação web responsiva para cadastrar, pesquisar e organizar poemas. Desenvolvida com HTML semântico, CSS e JavaScript modular, sem dependências externas.
 
-## Estrutura
+## Funcionalidades
+
+- cadastro e autenticação local;
+- sessão por aba do navegador;
+- senhas protegidas com PBKDF2 e salt individual;
+- poemas separados por usuário;
+- inclusão, pesquisa e exclusão de poemas;
+- layout responsivo e acessível;
+- persistência de dados no navegador.
+
+## Arquitetura
 
 ```text
-web_minha_galeria/
-├── assets/
-│   ├── css/
-│   │   ├── auth.css
-│   │   ├── base.css
-│   │   └── gallery.css
-│   └── js/
-│       ├── gallery.js
-│       ├── login.js
-│       ├── register.js
-│       └── storage.js
-├── Imagens/
-├── cadastrar.html
-├── galeria.html
-└── login.html
+assets/
+├── css/
+│   ├── auth.css
+│   ├── base.css
+│   └── gallery.css
+└── js/
+    ├── core/
+    │   ├── constants.js
+    │   ├── crypto.js
+    │   └── storage.js
+    ├── pages/
+    │   ├── gallery.js
+    │   ├── login.js
+    │   └── register.js
+    └── services/
+        ├── auth-service.js
+        └── poem-service.js
 ```
 
-Os arquivos HTML cuidam da estrutura, os arquivos CSS da apresentação e os arquivos JavaScript do comportamento e da persistência no `localStorage`.
+- `core`: infraestrutura compartilhada e configurações.
+- `services`: regras de autenticação e gerenciamento dos poemas.
+- `pages`: interação entre cada página e os serviços.
+- `css`: estilos globais e específicos de cada contexto.
 
 ## Executar localmente
 
-Abra `cadastrar.html` no navegador para criar um usuário. Em seguida, faça login e use a galeria.
+Como o projeto usa módulos ES, execute-o por um servidor HTTP local. Por exemplo:
 
-> Este é um projeto educacional. As credenciais ficam no `localStorage` do navegador e esse método não deve ser usado em produção.
+```bash
+python -m http.server 8000
+```
+
+Depois acesse `http://localhost:8000`.
+
+## Limitação de segurança
+
+Este é um projeto de front-end para fins educacionais. Embora a senha seja derivada com PBKDF2 antes do armazenamento, uma aplicação de produção deve realizar autenticação e persistência em um servidor seguro.
