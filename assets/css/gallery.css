@@ -105,6 +105,12 @@
   overflow-wrap: anywhere;
 }
 
+.poem-card__source {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
 .poem-card__delete {
   align-self: start;
 }
