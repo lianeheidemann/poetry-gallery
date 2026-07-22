@@ -1,57 +1,76 @@
-.page-header {
+.app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem max(5vw, 1rem);
+  color: #ffffff;
+}
+
+.app-header h1 {
+  margin-bottom: 0;
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+}
+
+.app-header__eyebrow {
+  margin-bottom: 0.25rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
   gap: 1rem;
-  padding: 1rem clamp(1rem, 5vw, 3rem);
-  background: var(--panel);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.page-header h1 {
-  margin: 0;
-}
-
-.secondary-button {
-  width: auto;
-  background: transparent;
-  border: 1px solid #ffffff;
-}
-
-.page-content {
+.app-layout {
   display: grid;
-  gap: 1.25rem;
-  width: min(90%, 800px);
-  margin: 1.25rem auto 2rem;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 1.5rem;
+  width: min(92%, 1200px);
+  margin: 0 auto 3rem;
 }
 
-.form-panel {
-  width: min(100%, 360px);
-  margin-inline: auto;
+.editor,
+.collection {
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
-.form-panel input,
-.form-panel select,
-.form-panel textarea,
-.form-panel button,
-.search-panel input {
-  margin: 0.4rem 0 0.9rem;
+.editor {
+  align-self: start;
 }
 
-.form-panel textarea {
-  resize: vertical;
+.collection {
+  min-width: 0;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+  box-shadow: var(--shadow-sm);
 }
 
-.user-label {
-  margin-top: 0;
-  padding: 0.75rem;
-  background: #7c6094;
-  text-align: center;
+.collection__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.search-panel {
-  width: min(100%, 480px);
-  margin-inline: auto;
+.collection__header h2,
+.editor h2 {
+  margin-bottom: 0.4rem;
+}
+
+.collection__header p,
+.editor > p {
+  margin-bottom: 0;
+}
+
+.collection__search {
+  width: min(100%, 320px);
 }
 
 .poem-list {
@@ -61,42 +80,68 @@
 
 .poem-card {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
-  padding: 1rem;
-  background: var(--panel);
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
 }
 
-.poem-card h3,
-.poem-card p {
-  margin-top: 0;
+.poem-card h3 {
+  margin-bottom: 0.35rem;
+  overflow-wrap: anywhere;
 }
 
-.poem-text {
+.poem-card__metadata {
+  margin-bottom: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.poem-card__text {
+  margin-bottom: 0;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
-.delete-button {
-  width: 44px;
-  height: 44px;
-  padding: 0.6rem;
-  background: var(--danger);
+.poem-card__delete {
+  align-self: start;
 }
 
-.delete-button img {
-  width: 100%;
-}
-
-.empty-message {
+.empty-state {
+  margin: 3rem 0;
+  color: var(--color-text-muted);
   text-align: center;
 }
 
-@media (max-width: 540px) {
-  .page-header {
-    align-items: flex-start;
+@media (max-width: 800px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-header,
+  .app-header__actions,
+  .collection__header {
+    align-items: stretch;
+    flex-direction: column;
   }
 
-  .page-header h1 {
-    font-size: 1.5rem;
+  .app-header__actions {
+    gap: 0.75rem;
+  }
+
+  .collection__search {
+    width: 100%;
+  }
+
+  .poem-card {
+    grid-template-columns: 1fr;
+  }
+
+  .poem-card__delete {
+    justify-self: start;
   }
 }
