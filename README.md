@@ -21,6 +21,11 @@ O vídeo também está disponível em [`assets/interface_v1.mp4`](assets/interfa
 5. Cadastre um usuário e uma senha.
 6. Acesse a página `login.html` e entre com os dados cadastrados.
 
-<br>
-
 > Os dados são armazenados somente no `localStorage` do navegador. Portanto, este projeto é adequado apenas para estudos e demonstrações locais.
+
+## Usuário de teste
+
+```text
+Usuário: user
+Senha: password
+```
