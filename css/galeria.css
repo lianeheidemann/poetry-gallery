@@ -1,12 +1,176 @@
+/* =========================================================
+   LAYOUT DA GALERIA
+   ========================================================= */
+body {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 760px);
+  grid-template-rows: auto auto 1fr;
+  justify-content: center;
+  align-content: start;
+  gap: 22px 28px;
+  padding: 0 28px 48px;
+}
+
+body > br {
+  display: none;
+}
+
+.containerTitulo {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  grid-column: 1 / -1;
+  width: calc(100% + 56px);
+  margin-left: -28px;
+  padding: 17px clamp(24px, 5vw, 64px);
+
+  border-bottom: 1px solid var(--border);
+
+  background: rgba(7, 17, 31, 0.82);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.24);
+
+  text-align: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.containerTitulo::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(22, 157, 202, 0.75),
+    rgba(141, 92, 167, 0.72),
+    rgba(241, 200, 38, 0.6),
+    transparent
+  );
+}
+
+/* Mantém “Galeria de Poemas” em branco */
+.containerTitulo h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+#logout {
+  position: absolute;
+  top: 50%;
+  right: clamp(24px, 5vw, 64px);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  min-height: 38px;
+  padding: 8px 16px;
+
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+
+  background: rgba(154, 207, 224, 0.035);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-align: center;
+
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#logout:hover {
+  border-color: rgba(243, 148, 171, 0.65);
+  background-color: rgba(243, 148, 171, 0.1);
+  transform: translateY(-50%) translateY(-1px);
+}
+
+#logout:focus-visible {
+  outline: 3px solid rgba(241, 200, 38, 0.72);
+  outline-offset: 3px;
+}
+
+.containerCadastro,
+.containerBusca,
+.containerGaleria {
+  width: 100%;
+  margin: 0;
+}
+
+.containerCadastro,
+.containerBusca {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.032),
+      rgba(255, 255, 255, 0) 44%
+    ),
+    var(--card-background);
+
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.containerCadastro {
+  position: sticky;
+  top: 102px;
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  align-self: start;
+  padding: 24px;
+}
+
+.containerCadastro > p:not(.gallery-footer) {
+  margin: 4px 0 14px;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.containerBusca {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 18px 20px 16px;
+}
+
+.containerGaleria {
+  grid-column: 2;
+  grid-row: 3;
+  min-width: 0;
+}
+
+/* =========================================================
+   CAMPOS E AÇÕES
+   ========================================================= */
 button,
 input,
 select {
   width: 100%;
-  margin: 6px 0;
-  padding: 11px 14px;
+  min-height: 44px;
+  margin: 7px 0 14px;
+  padding: 11px 13px;
 
   border: 1px solid var(--border);
-  border-radius: 7px;
+  border-radius: 10px;
 
   background-color: var(--input-background);
   color: var(--text-primary);
@@ -15,234 +179,433 @@ select {
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
+    background-color 0.2s ease,
     transform 0.2s ease;
+}
+
+input:hover,
+select:hover {
+  border-color: rgba(154, 207, 224, 0.25);
 }
 
 input:focus,
 select:focus {
-  border-color: var(--light-blue);
-  box-shadow: 0 0 0 3px rgba(140, 199, 232, 0.12);
+  border-color: var(--blue);
+  background-color: #0b192b;
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+select {
+  appearance: none;
+  padding-right: 40px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 17px) calc(50% - 2px),
+    calc(100% - 12px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+#poema {
+  min-height: 104px;
+  padding-top: 13px;
 }
 
 button {
-  border: none;
-
-  background: linear-gradient(
-    90deg,
-    var(--blue),
-    var(--purple),
-    var(--yellow)
-  );
-
+  min-height: 46px;
+  margin: 8px 0 0;
+  border: 0;
+  background: var(--accent-gradient);
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 750;
+  letter-spacing: 0.01em;
   cursor: pointer;
+  box-shadow: 0 10px 24px rgba(22, 157, 202, 0.13);
 }
 
 button:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.08);
+  transform: translateY(-2px);
+  filter: brightness(1.06) saturate(1.05);
+  box-shadow: 0 14px 30px rgba(141, 92, 167, 0.2);
 }
 
-table {
-  width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
-
-  border-collapse: separate;
-  border-spacing: 0;
-
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-
-  background-color: var(--card-background);
-  box-shadow: 0 18px 45px var(--shadow);
+button:active {
+  transform: translateY(0);
 }
 
-tr,
-td {
-  padding: 15px;
-  background-color: transparent;
+.containerBusca label,
+.containerSelection label {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 650;
 }
 
-tbody tr:not(:last-child) td {
-  border-bottom: 1px solid var(--border);
-}
-
-th {
-  background: linear-gradient(
-    90deg,
-    rgba(21, 152, 194, 0.35),
-    rgba(133, 80, 181, 0.35)
-  );
-}
-
-/* Mantém o título Poemas branco */
-th h2 {
-  margin: 5px 0;
-  color: #ffffff;
-}
-
-.containerTitulo {
-  position: relative;
-
-  padding: 14px 28px;
-
-  border-bottom: 1px solid var(--border);
-
-  background-color: rgba(11, 18, 32, 0.88);
-  box-shadow: 0 8px 28px var(--shadow);
-
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-/* Mantém Galeria de Poemas branco */
-.containerTitulo h1 {
-  margin: 0;
-  color: #ffffff;
-}
-
-#logout {
-  position: absolute;
-  top: 50%;
-  right: 28px;
-
+.containerBusca label {
   display: block;
-  width: auto;
-  padding: 9px 17px;
-
-  border: 1px solid rgba(140, 199, 232, 0.45);
-  border-radius: 7px;
-
-  color: #ffffff;
-  text-align: center;
-  cursor: pointer;
-
-  transform: translateY(-50%);
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+  margin-bottom: 3px;
 }
 
-#logout:hover {
-  border-color: var(--light-blue);
-  background-color: rgba(140, 199, 232, 0.1);
-}
-
-.containerCadastro,
-.containerBusca,
-.containerGaleria {
-  width: 80%;
-  margin: 22px auto;
-}
-
-.containerCadastro,
-.containerBusca {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-
-  background-color: var(--card-background);
-  box-shadow: 0 18px 45px var(--shadow);
-
-  backdrop-filter: blur(10px);
-}
-
-.containerCadastro {
-  max-width: 380px;
-  padding: 22px;
-}
-
-.containerBusca {
-  max-width: 520px;
-  padding: 20px;
-}
-
-.containerGaleria {
-  max-width: 800px;
+.containerBusca input {
+  margin-bottom: 0;
 }
 
 .containerSelection {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
+  gap: 10px;
 }
 
 .containerSelection label {
-  color: var(--text-secondary);
   white-space: nowrap;
+}
+
+.containerSelection select {
+  margin: 4px 0 12px;
 }
 
 .div-1 {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 20px;
+  padding: 11px 13px;
 
-  margin-bottom: 18px;
+  border: 1px solid rgba(141, 92, 167, 0.25);
+  border-radius: 11px;
 
-  border: 1px solid rgba(133, 80, 181, 0.25);
-  border-radius: 7px;
+  background: linear-gradient(
+    90deg,
+    rgba(22, 157, 202, 0.1),
+    rgba(141, 92, 167, 0.12)
+  );
+}
 
-  background-color: rgba(133, 80, 181, 0.13);
+.div-1::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  content: "";
+  background-color: var(--yellow);
+  box-shadow: 0 0 12px rgba(241, 200, 38, 0.55);
 }
 
 .div-1 p {
-  margin: 10px;
+  flex: 1;
+  margin: 0 0 0 10px;
   color: var(--text-secondary);
+  font-size: 0.78rem;
 }
 
 .div-1 strong {
   color: var(--light-blue);
 }
 
-.delete-button {
+/* =========================================================
+   LISTA DE POEMAS
+   ========================================================= */
+table {
   display: block;
-  width: 50%;
-  margin: 3px auto;
-  padding: 6px 7px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+
   border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 18px;
+
   background: transparent;
-  cursor: pointer;
+  box-shadow: none;
+}
+
+thead,
+tbody {
+  display: block;
+  width: 100%;
+}
+
+thead {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(22, 157, 202, 0.25),
+      rgba(141, 92, 167, 0.28),
+      rgba(91, 24, 63, 0.24)
+    ),
+    var(--card-background-strong);
+  box-shadow: 0 15px 36px rgba(0, 0, 0, 0.22);
+}
+
+thead::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: var(--accent-gradient);
+}
+
+thead tr {
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  align-items: center;
+}
+
+th {
+  padding: 12px 18px;
+  background: transparent;
+  text-align: left;
+}
+
+th:last-child {
+  padding: 0;
+}
+
+/* Mantém “Poemas” em branco */
+th h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+tbody {
+  display: grid;
+  gap: 12px;
+}
+
+tbody tr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 52px;
+  align-items: stretch;
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.024),
+      rgba(255, 255, 255, 0) 46%
+    ),
+    rgba(16, 29, 48, 0.82);
+
+  box-shadow: 0 15px 38px rgba(0, 0, 0, 0.22);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+tbody tr:hover {
+  border-color: rgba(154, 207, 224, 0.27);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.29);
+}
+
+tr,
+td {
+  background-color: transparent;
+}
+
+td {
+  min-width: 0;
+  padding: 17px 18px;
+}
+
+td:first-child p {
+  margin: 0;
+}
+
+td:first-child p:first-child {
+  margin-bottom: 9px;
+  color: var(--text-primary);
+  font-size: 0.93rem;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+td:first-child p:nth-child(2) {
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+td:first-child p:nth-child(3) {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 12px;
+  padding: 5px 9px;
+
+  border: 1px solid rgba(154, 207, 224, 0.14);
+  border-radius: 999px;
+
+  background: rgba(154, 207, 224, 0.055);
+  color: var(--light-blue);
+  font-size: 0.69rem;
+  font-weight: 650;
+}
+
+td:last-child {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 13px 10px;
+  border-left: 1px solid rgba(154, 207, 224, 0.08);
+}
+
+.delete-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  min-height: 34px;
+  margin: 0;
+  padding: 0;
+
+  border: 1px solid rgba(243, 148, 171, 0.18);
+  border-radius: 9px;
+
+  background: rgba(243, 148, 171, 0.06);
+  box-shadow: none;
 }
 
 .delete-button:hover {
-  background: transparent;
-  transform: scale(1.08);
+  border-color: rgba(243, 148, 171, 0.48);
+  background: rgba(243, 148, 171, 0.13);
+  transform: translateY(-1px);
+  filter: none;
+  box-shadow: none;
 }
 
 .delete-button img {
   display: block;
-  width: 14px;
-  margin: 0 auto;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  object-fit: contain;
+  opacity: 0.9;
 }
 
 .gallery-footer {
-  margin: 18px 0;
+  margin: 22px 0 0;
   text-align: center;
-  color: var(--text-secondary);
-  font-size: 13px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
 }
 
-@media (max-width: 768px) {
-  .containerCadastro,
-  .containerBusca,
-  .containerGaleria,
-  table {
-    width: 90%;
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+@media (max-width: 940px) {
+  body {
+    grid-template-columns: minmax(0, 760px);
+    grid-template-rows: auto auto auto auto;
+    gap: 18px;
+    padding-inline: 20px;
   }
 
   .containerTitulo {
-    padding: 16px 18px 70px;
+    grid-column: 1;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+  }
+
+  .containerCadastro,
+  .containerBusca,
+  .containerGaleria {
+    grid-column: 1;
+  }
+
+  .containerCadastro {
+    position: relative;
+    top: auto;
+    grid-row: 2;
+  }
+
+  .containerBusca {
+    grid-row: 3;
+  }
+
+  .containerGaleria {
+    grid-row: 4;
+  }
+}
+
+@media (max-width: 620px) {
+  body {
+    gap: 14px;
+    padding: 0 14px 36px;
+  }
+
+  .containerTitulo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: calc(100% + 28px);
+    margin-left: -14px;
+    padding: 15px 16px;
+    text-align: left;
+  }
+
+  .containerTitulo h1 {
+    font-size: 1.2rem;
   }
 
   #logout {
-    top: auto;
-    right: 50%;
-    bottom: 13px;
-    transform: translateX(50%);
+    position: static;
+    min-width: 74px;
+    min-height: 36px;
+    padding: 7px 12px;
+    transform: none;
+  }
+
+  #logout:hover {
+    transform: translateY(-1px);
+  }
+
+  .containerCadastro {
+    padding: 20px;
+  }
+
+  .containerBusca {
+    padding: 17px;
   }
 
   .containerSelection {
-    display: block;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .containerSelection select {
+    margin-top: 6px;
+  }
+
+  thead tr,
+  tbody tr {
+    grid-template-columns: minmax(0, 1fr) 46px;
+  }
+
+  th,
+  td {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  td:last-child {
+    padding-left: 6px;
+    padding-right: 6px;
   }
 }
