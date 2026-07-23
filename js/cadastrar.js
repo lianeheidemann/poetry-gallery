@@ -11,8 +11,8 @@ formCadastro.addEventListener("submit", function (event) {
     return;
   }
 
-  localStorage.setItem("username", username);
-  localStorage.setItem("password", password);
+  sessionStorage.setItem("username", username);
+  sessionStorage.setItem("password", password);
 
   window.alert("Cadastro efetuado com sucesso! Você será redirecionado para fazer o login.");
   window.location.href = "login.html";

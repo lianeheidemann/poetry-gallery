@@ -5,7 +5,7 @@ const categoriaSelect = document.getElementById("select");
 const inputPesquisa = document.getElementById("inputPesquisa");
 const tabela = document.getElementById("tbl");
 
-const username = localStorage.getItem("username");
+const username = sessionStorage.getItem("username");
 const elementoUsername = document.getElementById("myUsername");
 
 elementoUsername.textContent = username || "Visitante";
@@ -65,14 +65,14 @@ Quantos filhos em vão rezaram!`
 ];
 
 /* Salva os poemas iniciais somente na primeira execução */
-if (!localStorage.getItem("poemas")) {
-  localStorage.setItem(
+if (!sessionStorage.getItem("poemas")) {
+  sessionStorage.setItem(
     "poemas",
     JSON.stringify(poemasIniciais)
   );
 }
 
-let poemas = JSON.parse(localStorage.getItem("poemas")) || [];
+let poemas = JSON.parse(sessionStorage.getItem("poemas")) || [];
 
 /* Mostra todos os poemas na tabela */
 function mostrarPoemas() {
@@ -153,7 +153,7 @@ function criarBotaoExcluir(idPoema) {
 
   const imagem = document.createElement("img");
 
-  imagem.src = "img/deleteIcon.png";
+  imagem.src = "assets/imagem/deleteIcon.png";
   imagem.alt = "Excluir poema";
 
   botao.appendChild(imagem);
@@ -161,7 +161,7 @@ function criarBotaoExcluir(idPoema) {
   return botao;
 }
 
-/* Remove o poema e atualiza o localStorage */
+/* Remove o poema e atualiza o sessionStorage */
 function removePoema(idPoema) {
   poemas = poemas.filter(function (poema) {
     return poema.id !== idPoema;
@@ -173,7 +173,7 @@ function removePoema(idPoema) {
 
 /* Salva a lista atualizada */
 function salvarPoemas() {
-  localStorage.setItem(
+  sessionStorage.setItem(
     "poemas",
     JSON.stringify(poemas)
   );

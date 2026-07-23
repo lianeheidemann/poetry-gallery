@@ -3,18 +3,18 @@ const SENHA_TESTE = "password";
 const formLogin = document.getElementById("formLogin");
 
 if (
-  !localStorage.getItem("username") ||
-  !localStorage.getItem("password")
+  !sessionStorage.getItem("username") ||
+  !sessionStorage.getItem("password")
 ) {
-  localStorage.setItem("username", "user");
-  localStorage.setItem("password", "password");
+  sessionStorage.setItem("username", "user");
+  sessionStorage.setItem("password", "password");
 }
 
 formLogin.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const usernameSalvo = localStorage.getItem("username");
-  const passwordSalvo = localStorage.getItem("password");
+  const usernameSalvo = sessionStorage.getItem("username");
+  const passwordSalvo = sessionStorage.getItem("password");
 
   const usernameInformado = document
     .getElementById("username")
@@ -36,7 +36,7 @@ formLogin.addEventListener("submit", function (event) {
   )
 ) {
   window.alert("Login bem-sucedido!");
-  localStorage.setItem("username", usernameInformado);
+  sessionStorage.setItem("username", usernameInformado);
   window.location.href = "galeria.html";
   return;
 }
