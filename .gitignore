@@ -1,0 +1,12 @@
+# Dependencies (if any tooling is added later)
+node_modules/
+
+# Environment variables
+.env
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
