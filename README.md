@@ -6,10 +6,14 @@
 
 A responsive web application for managing a poetry gallery, built with HTML, CSS, and JavaScript. Users can create accounts, authenticate, and organize poems, while browser `localStorage` provides local data persistence.
 
+## Live Demo
+
+🔗 **[Open the live gallery](https://lianeheidemann.github.io/poetry-gallery/)**
+
 ## Overview
 
 <p align="center">
-  <img src="assets\interface_v2.gif" alt="Desktop interface demonstration" />
+  <img src="assets/interface_v2.gif" alt="Desktop interface demonstration" />
 </p>
 
 ## How to Run
@@ -33,5 +37,5 @@ Password: password
 ## Responsive Mobile Experience
 
 <p align="center">
-  <img src="assets\interface_v2_mobile.gif" alt="Mobile interface demonstration" width="320" />
+  <img src="assets/interface_v2_mobile.gif" alt="Mobile interface demonstration" width="320" />
 </p>
