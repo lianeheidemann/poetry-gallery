@@ -18,6 +18,8 @@ A responsive web application for managing a poetry gallery, built with HTML, CSS
 
 ## How to Run
 
+The fastest way to try the project is the [live demo](https://lianeheidemann.github.io/poetry-gallery/) above. To run it locally instead:
+
 1. Open the project in **Visual Studio Code**.
 2. Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension.
 3. Right-click `cadastrar.html`.
