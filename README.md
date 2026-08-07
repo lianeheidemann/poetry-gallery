@@ -41,3 +41,5 @@ Password: password
 <p align="center">
   <img src="assets/interface_v2_mobile.gif" alt="Mobile interface demonstration" width="320" />
 </p>
+
+<!-- redeploy after interface rollback -->
