@@ -43,3 +43,8 @@ Password: password
 </p>
 
 <!-- redeploy after interface rollback -->
+
+---
+
+<p align="center">Developed by <strong>Liane Heidemann</strong></p>
+
